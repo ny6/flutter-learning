@@ -82,13 +82,13 @@ class _LocationScreenState extends State<LocationScreen> {
                     onPressed: () async {
                       String typedName = await Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                            return CityScreen();
-                          }));
+                        return CityScreen();
+                      }));
 
                       if (typedName != null) {
                         print(typedName);
                         Map weatherData =
-                        await weatherModel.getWeatherByCityName(typedName);
+                            await weatherModel.getWeatherByCityName(typedName);
                         updateUI(weatherData);
                       }
                     },
