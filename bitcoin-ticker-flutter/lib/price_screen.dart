@@ -10,6 +10,12 @@ class PriceScreen extends StatefulWidget {
 
 class _PriceScreenState extends State<PriceScreen> {
   String currency = 'USD';
+  String symbol = 'BTC';
+  bool isComplete = false;
+  Map<String, double> prices = {};
+  double price = 0;
+
+  CoinData coinData = CoinData();
 
   DropdownButton androidDropdown() {
     List<DropdownMenuItem<String>> items = [];
@@ -24,6 +30,7 @@ class _PriceScreenState extends State<PriceScreen> {
         setState(() {
           currency = value;
         });
+        getCurrencyData();
       },
     );
   }
@@ -41,9 +48,44 @@ class _PriceScreenState extends State<PriceScreen> {
         setState(() {
           currency = currenciesList[index];
         });
+        getCurrencyData();
       },
       children: items,
     );
+  }
+
+  List<Widget> printCurrencyWidgets() {
+    List<Widget> widgets = [];
+    prices.forEach((key, val) {
+      widgets.add(Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          '1 $key = $val $currency',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 20.0,
+            color: Colors.white,
+          ),
+        ),
+      ));
+    });
+
+    return widgets;
+  }
+
+  getCurrencyData() async {
+    Map data = await coinData.getLastPriceOfCurrency(currency);
+    print(data);
+    setState(() {
+      prices = data;
+      isComplete = true;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getCurrencyData();
   }
 
   @override
@@ -66,13 +108,8 @@ class _PriceScreenState extends State<PriceScreen> {
               ),
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
-                child: Text(
-                  '1 BTC = ? USD',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.white,
-                  ),
+                child: Column(
+                  children: printCurrencyWidgets(),
                 ),
               ),
             ),
