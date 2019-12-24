@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "763142451861",
+    "firebase_url": "https://flashchat-flutter-yk.firebaseio.com",
+    "project_id": "flashchat-flutter-yk",
+    "storage_bucket": "flashchat-flutter-yk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:763142451861:android:d7b49ec674eae3fbb8619c",
+        "android_client_info": {
+          "package_name": "in.yeshu.flash_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "763142451861-vt8sgf72m7s699tvp2thd7mbda0vf3c9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvr7rvouWJFeJDgrG--xT_MUvoPt68MAg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "763142451861-vt8sgf72m7s699tvp2thd7mbda0vf3c9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
